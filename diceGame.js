@@ -1,5 +1,6 @@
 "use strict "
 
+//Global variables 
 var playerOneScore = -1;
 var playerTwoScore = -1;
 
@@ -46,7 +47,7 @@ function containsThreeHappyNumbers(results) {
 }
 
 /*
-The function will test if at least 3 numbers are even numbers.
+The function will test for 4 even numbers. 
 */
 function evenNumbers(results) {
 	var end = 0;
@@ -62,8 +63,7 @@ function evenNumbers(results) {
 } 
 
 /*
-The function will go through the results 
-and test if all the numbers are divisable by 3. 
+The function will test for 5 odd numbers. 
 */
 function oddNumbers(results) {
 	var end = 0;
@@ -78,12 +78,10 @@ function oddNumbers(results) {
 	return false; 
 } 
 
-function highestLastNumber(results) {
-
-	for (var i = results.length - 1; i >= 0; i--) {
-	}
-}
-
+/*
+The function will generate random numbers for each dice there is
+and score it passed on the results. 
+*/
 function playerRoll() {
 	var dice1 = [4, 6, 8, 10, 12, 20];
 	var score = 0;
@@ -97,38 +95,30 @@ function playerRoll() {
 		score = 10;
 		console.log("WOOW You have Singles hand: " + results);
 		return score;
-		//output = "WOOW you have Singles hand: " + results + ", You scored: " + score;
-		//console.log("WOOW you have Singles hand! " + results);
 	} else if (containsThreeHappyNumbers(results)) {
 		score = 7;
 		console.log("you have 3 happy numbers: " + results);
 		return score; 
-		//output = "you have 3 happy numbers: " + results + ", You scored: " + score;
-		//console.log("you have 3 happy numbers " + results);
 	} else if (evenNumbers(results)) {
 		score = 5;
 		console.log("you have 4 even numbers: " + results);
 		return score;
-		//output = "you have 4 even numbers: " + results + ", You scored: " + score;
-		//console.log("you have 4 even numbers " + results);
 	} else if (oddNumbers(results)) {
 		score = 4;
 		console.log("you have 5 odd numbers: " + results);
 		return score;
-		//output = "you have 5 odd numbers: " + results + ", You scored: " + score;
-		//console.log("you have 5 odd numbers " + results);
 	} else {
 		score = 0;
 		console.log("you have no hand: " + results);
 		return score; 
-		//output = "you have no hand: " + results + ", You scored: " + score;
-		//console.log("your numbers are not divisalbe by 2 " + results);
-		//console.log("your hand is not singles hand " + results);
-
 	}
 
 }
 
+/*
+The function will run the game from the click of the user
+then determin the winner. 
+*/
 function play(run) {
 
 	if (run.id === "player1" ) {
@@ -138,7 +128,7 @@ function play(run) {
 	}
 
 	if (playerOneScore === -1 && playerTwoScore === -1) {
-		return;
+		alert("Lets get the game started, start rolling players!!");
 	} else if (playerOneScore === -1 || playerTwoScore === -1) {
 		alert("Next player's turn");
 	} else if (playerOneScore !== -1 && playerTwoScore !== -1) {
@@ -150,8 +140,8 @@ function play(run) {
 			console.log("player 1: You lost the round with score of " + playerOneScore);
 
 		} else if (playerOneScore === playerTwoScore) {
-			console.log("We have a tie round with player 1 score of " + playerOneScore 
-				+ " and player 2 score of" + playerTwoScore);
+			console.log("We have a tie round with player 1 score of '" + playerOneScore 
+				+ "'' and player 2 score of " + playerTwoScore + "'");
 		}
 	}
 }
