@@ -82,7 +82,7 @@ function oddNumbers(results) {
 The function will generate random numbers for each dice there is
 and score it passed on the results. 
 */
-function playerRoll() {
+function playerRoll(players) {
 	var dice1 = [4, 6, 8, 10, 12, 20];
 	var score = 0;
 	var output = "";
@@ -93,23 +93,23 @@ function playerRoll() {
 	}
 	if(singlesHand(results)) {
 		score = 10;
-		console.log("WOOW You have Singles hand: " + results);
+		console.log(players + "WOOW You have Singles hand: " + results);
 		return score;
 	} else if (containsThreeHappyNumbers(results)) {
 		score = 7;
-		console.log("you have 3 happy numbers: " + results);
+		console.log(players + "you have 3 happy numbers: " + results);
 		return score; 
 	} else if (evenNumbers(results)) {
 		score = 5;
-		console.log("you have 4 even numbers: " + results);
+		console.log(players + "you have 4 even numbers: " + results);
 		return score;
 	} else if (oddNumbers(results)) {
 		score = 4;
-		console.log("you have 5 odd numbers: " + results);
+		console.log(players + "you have 5 odd numbers: " + results);
 		return score;
 	} else {
 		score = 0;
-		console.log("you have no hand: " + results);
+		console.log(players + "you have no hand: " + results);
 		return score; 
 	}
 
@@ -121,27 +121,41 @@ then determin the winner.
 */
 function play(run) {
 
-	if (run.id === "player1" ) {
-		playerOneScore =  playerRoll();
+	var playerOne = "Player One, ";
+	var playerTwo = "Player Two, ";
+	if (run.id === "player1") {
+		playerOneScore =  playerRoll(playerOne);
+		//alert("player 2 turn");
 	} else if (run.id === "player2") {
-		playerTwoScore = playerRoll();
+		playerTwoScore = playerRoll(playerTwo);
+		//alert("player 1 turn");
 	}
 
-	if (playerOneScore === -1 && playerTwoScore === -1) {
-		alert("Lets get the game started, start rolling players!!");
-	} else if (playerOneScore === -1 || playerTwoScore === -1) {
-		alert("Next player's turn");
-	} else if (playerOneScore !== -1 && playerTwoScore !== -1) {
+
+	/*
+	if (playerOneScore === -1) {
+		alert("Player One needs to Roll!!");
+	} else if (playerTwoScore === -1) {
+		alert("Player Two needs to Roll!!");
+	} else*/
+	 if (playerOneScore !== -1 && playerTwoScore !== -1) {
 		if (playerOneScore > playerTwoScore) {
-		console.log("player 1: You won the round with score of " + playerOneScore);
-		console.log("player 2: You lost the round with score of " + playerTwoScore);
+		console.log("player 1: You won the round with a score of " + playerOneScore);
+		console.log("player 2: You lost the round with a score of " + playerTwoScore);
 		} else if (playerOneScore < playerTwoScore) {
-			console.log("player 2: You won the round with score of " + playerTwoScore);
-			console.log("player 1: You lost the round with score of " + playerOneScore);
+			console.log("player 2: You won the round with a score of " + playerTwoScore);
+			console.log("player 1: You lost the round with a score of " + playerOneScore);
 
 		} else if (playerOneScore === playerTwoScore) {
 			console.log("We have a tie round with player 1 score of '" + playerOneScore 
-				+ "'' and player 2 score of " + playerTwoScore + "'");
+				+ "' and player 2 score of " + playerTwoScore + "'");
 		}
+		playerOneScore = -1;
+		playerTwoScore = -1;
+	} else 	if (playerOneScore === -1) {
+		alert("Player One needs to Roll!!");
+	} else if (playerTwoScore === -1) {
+		alert("Player Two needs to Roll!!");
 	}
+
 }
