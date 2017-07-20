@@ -5,22 +5,25 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<title></title>
 </head>
-<body>
+<body class="bodyContent">
+	<div id="content">
+	<img class="backgroundPic", src="dice.jpg">
 	<left>
-	<h1>Welcome to Texas Holdem Of Dice</h1>
-	<h2>Rules of the game</2>
+	<h1><center>Welcome to Texas Holdem Of Dice</center></h1>
+	<h2>Rules of the game</h2>
 	<p class = "gameDiscription">
 	-Each player will roll the dice to get a set of number</br> 
 	-The players will compare each others had to see who has the better hand</br>
 	-The player with the higher hand wins!!</br>
 	</p> 
-	<h2>Ranking of different hands type:</h2>
+	<h2>The Ranking of different hands type:</h2>
 	<p>
 		<ol>
-			<li>Hand with six "1"</li>
-			<li>Hand with at least 3 Happy Number</li>
-			<li>Hand with 4 even numbers</li>
-			<li>Hand with 5 odd numbers</li>
+			<li>Hand with six '1' for a score of '10' points.</li>
+			<li>Hand with at least '3' Happy Number for a score of '7' points.</li>
+			<li>Hand with '4' even numbers for a score of '5' points.</li>
+			<li>Hand with '5' odd numbers for a score of '4' points.</li>
+			<li>Hand with non of the above comenations for a score of '0' points.</li>
 
 		</ol>
 		<h3>Note: Happy numbers are 1, 7, 10, 13, 19.</h3>
@@ -34,8 +37,9 @@
 	<div id="box5", class="b5", style="color: black"></div>
 	<div id="box6", class="b6", style="color: black"></div></br></br>
 
-	<button id="player1", onclick="play(this)", type="button">Player 1: Roll!!</button></br>
-	<button id="player2", onclick="play(this)", type="button">Player 2: Roll!!</button></br>
+	<button id="player1", onclick="playerClicks(this)", type="button">Player 1: Roll!!</button></br>
+	<button id="player2", onclick="playerClicks(this)", type="button">Player 2: Roll!!</button></br>
 	</left>
+	</div>
 </body>
 </html>

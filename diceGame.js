@@ -4,18 +4,11 @@
 var playerOneScore = -1;
 var playerTwoScore = -1;
 
-function typeOfDice() {
-	var dice1 = [4, 6, 8, 10, 12, 20];
-	//var dice2 = [4, 6, 8, 10, 12, 20];
-	return dice1
-}
-
 /*
 The function will test if all the numbers 
 are ones. 
 */
 function singlesHand(results) {
-	//var singles = [1, 1, 1, 1, 1, 1,];
 	var controler = true; 
 	for (var i = 0; i < results.length; i++) {
 		if (results[i] != 1) {
@@ -79,18 +72,63 @@ function oddNumbers(results) {
 } 
 
 /*
-The function will generate random numbers for each dice there is
-and score it passed on the results. 
+to generate a random number for every dice in the array 
 */
-function playerRoll(players) {
+function randomNumberGenerater() {
 	var dice1 = [4, 6, 8, 10, 12, 20];
-	var score = 0;
-	var output = "";
-	var results = []
+	var results = [];
 	for (var i = 0; i < dice1.length; i++) {
 		results.push(Math.floor(Math.random() * dice1[i] + 1));
 
 	}
+	return results;
+}
+
+/*
+to determin the winner based on the score
+*/
+
+function determinWhoWins() {
+	if (playerOneScore > playerTwoScore) {
+		console.log("player 1: You won the round with a score of " + playerOneScore);
+		console.log("player 2: You lost the round with a score of " + playerTwoScore);
+	} else if (playerOneScore < playerTwoScore) {
+		console.log("player 2: You won the round with a score of " + playerTwoScore);
+		console.log("player 1: You lost the round with a score of " + playerOneScore);
+
+	} else if (playerOneScore === playerTwoScore) {
+		console.log("We have a tie round with player 1 score of '" + playerOneScore 
+			+ "' and player 2 score of " + playerTwoScore + "'");
+	}
+	playerOneScore = -1;
+	playerTwoScore = -1;
+}
+
+/*
+The function will run the game from the click of the user
+then determin the winner. 
+*/
+function play() {
+
+	if (playerOneScore !== -1 && playerTwoScore !== -1) {
+		determinWhoWins();
+	} else 	if (playerOneScore === -1) {
+		alert("Player One needs to Roll!!");
+	} else if (playerTwoScore === -1) {
+		alert("Player Two needs to Roll!!");
+	}
+
+}
+
+/*
+The function will generate random numbers for each dice there is
+and score it passed on the results. 
+*/
+function playerRoll(players) {
+	var score = 0;
+	var output = "";
+	var results = randomNumberGenerater();
+
 	if(singlesHand(results)) {
 		score = 10;
 		console.log(players + "WOOW You have Singles hand: " + results);
@@ -116,46 +154,18 @@ function playerRoll(players) {
 }
 
 /*
-The function will run the game from the click of the user
-then determin the winner. 
+it tests which user clicks to play 
 */
-function play(run) {
-
+	function playerClicks(run) {
 	var playerOne = "Player One, ";
 	var playerTwo = "Player Two, ";
 	if (run.id === "player1") {
 		playerOneScore =  playerRoll(playerOne);
-		//alert("player 2 turn");
+		//return playerOneScore;
 	} else if (run.id === "player2") {
 		playerTwoScore = playerRoll(playerTwo);
-		//alert("player 1 turn");
+		//return playerTwoScore;
 	}
 
-
-	/*
-	if (playerOneScore === -1) {
-		alert("Player One needs to Roll!!");
-	} else if (playerTwoScore === -1) {
-		alert("Player Two needs to Roll!!");
-	} else*/
-	 if (playerOneScore !== -1 && playerTwoScore !== -1) {
-		if (playerOneScore > playerTwoScore) {
-		console.log("player 1: You won the round with a score of " + playerOneScore);
-		console.log("player 2: You lost the round with a score of " + playerTwoScore);
-		} else if (playerOneScore < playerTwoScore) {
-			console.log("player 2: You won the round with a score of " + playerTwoScore);
-			console.log("player 1: You lost the round with a score of " + playerOneScore);
-
-		} else if (playerOneScore === playerTwoScore) {
-			console.log("We have a tie round with player 1 score of '" + playerOneScore 
-				+ "' and player 2 score of " + playerTwoScore + "'");
-		}
-		playerOneScore = -1;
-		playerTwoScore = -1;
-	} else 	if (playerOneScore === -1) {
-		alert("Player One needs to Roll!!");
-	} else if (playerTwoScore === -1) {
-		alert("Player Two needs to Roll!!");
-	}
-
+	play();
 }

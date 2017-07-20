@@ -1,14 +1,37 @@
 .b1, .b2, .b3, .b4, .b5, .b6{
     display:inline-block;
-    position: center;
+    position: relative;
+    float: center;
     text-align: center;
     margin: 5px;
-    float:left;
     width: 40px;
     height:40px;
     background-color: lightgrey;
 }
 
+.b6 {
+	margin-left: : 300px;
+}
+
+.b6 {
+	margin-right: 300px;
+}
 .gameDiscription{
 	font-size: 15px;
+}
+
+.bodyContent {
+	background-color: lightsteelblue;
+
+}
+
+#content {
+    max-width: 675px;
+    margin: auto;
+    padding: 10px;
+    background-color: white;
+}
+
+.backgroundPic{
+	background-repeat: repeat;
 }
