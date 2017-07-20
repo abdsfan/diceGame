@@ -120,6 +120,16 @@ function play() {
 
 }
 
+function outputResults(players, output) {
+	var playerOne = "Player One, ";
+	var playerTwo = "Player Two, ";
+	if (players === playerOne){
+		document.getElementById("box1").innerHTML = output;
+	} else if (players === playerTwo){
+		document.getElementById("box2").innerHTML = output;
+	}
+}
+
 /*
 The function will generate random numbers for each dice there is
 and score it passed on the results. 
@@ -130,24 +140,39 @@ function playerRoll(players) {
 	var results = randomNumberGenerater();
 
 	if(singlesHand(results)) {
-		score = 10;
-		console.log(players + "WOOW You have Singles hand: " + results);
+		score = 10;		
+		output = "WOOW You have Singles hand: " + results;
+		outputResults(players, output);
+		//document.getElementById("box1").innerHTML = output;
+		//console.log(players + "WOOW You have Singles hand: " + results);
 		return score;
 	} else if (containsThreeHappyNumbers(results)) {
 		score = 7;
-		console.log(players + "you have 3 happy numbers: " + results);
+		output = "your hand has 3 happy numbers: " + results;
+		outputResults(players, output);
+		//document.getElementById("box1").innerHTML = output;
+		//console.log(players + "you have 3 happy numbers: " + results);
 		return score; 
 	} else if (evenNumbers(results)) {
 		score = 5;
-		console.log(players + "you have 4 even numbers: " + results);
+		output ="your hand has 4 even numbers: " + results;
+		outputResults(players, output);
+		//document.getElementById("box1").innerHTML = output;
+		//console.log(players + "you have 4 even numbers: " + results);
 		return score;
 	} else if (oddNumbers(results)) {
 		score = 4;
-		console.log(players + "you have 5 odd numbers: " + results);
+		output ="your hand has 5 odd numbers: " + results;
+		outputResults(players, output);
+		//document.getElementById("box1").innerHTML = output;
+		//console.log(players + "you have 5 odd numbers: " + results);
 		return score;
 	} else {
 		score = 0;
-		console.log(players + "you have no hand: " + results);
+		output ="your hand has the lowest hand: " + results;
+		outputResults(players, output);
+		//document.getElementById("box1").innerHTML = output;
+		//console.log(players + "you have no hand: " + results);
 		return score; 
 	}
 
