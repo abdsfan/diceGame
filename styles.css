@@ -6,11 +6,28 @@
     margin: 5px;
     width: 40px;
     height:40px;
-    background-color: lightgrey;
+    background-color: lightsteelblue;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 #boxes{
 	margin-left: 150px;
 	float: center;
+}
+
+.rules, .ranking{
+	text-decoration: underline;
+}
+
+#player1, #player2{
+	margin-left: 110px;
+	float: center;
+	font-weight: bold;
+
+}
+.note{
+	font-weight: 500;
+	text-decoration: underline;
 }
 
 
