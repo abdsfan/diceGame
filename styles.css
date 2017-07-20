@@ -6,11 +6,12 @@
     margin: 5px;
     width: 40px;
     height:40px;
-    background-color: lightsteelblue;
+    background-color: silver;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 #boxes{
+	margin-top: 50px;
 	margin-left: 150px;
 	float: center;
 }
@@ -23,6 +24,8 @@
 	margin-left: 110px;
 	float: center;
 	font-weight: bold;
+	background-color: navy;
+	color: white;
 
 }
 .note{
@@ -36,7 +39,7 @@
 }
 
 .bodyContent {
-	background-color: lightsteelblue;
+	background-color:  darkslategray ;
 
 }
 
@@ -49,4 +52,9 @@
 
 .backgroundPic{
 	background-repeat: repeat;
+}
+
+.title{
+	background-color: navy;
+	color: white;
 }
