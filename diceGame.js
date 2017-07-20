@@ -9,15 +9,15 @@ The function will test if all the numbers
 are ones. 
 */
 function singlesHand(results) {
-	var controler = true; 
+	var controller = true; 
 	for (var i = 0; i < results.length; i++) {
 		if (results[i] != 1) {
-			controler = false;
-			return controler;
+			controller = false;
+			return controller;
 		}
 		
 	}
-	return control; 
+	return controller; 
 }
 
  /*
@@ -89,16 +89,26 @@ to determin the winner based on the score
 */
 
 function determinWhoWins() {
+	var resultsType = ["No hand", "5 Odd Numbers", "4 Even Numbers", "3 Happy Numbers", "Singles"]
 	if (playerOneScore > playerTwoScore) {
-		console.log("player 1: You won the round with a score of " + playerOneScore);
-		console.log("player 2: You lost the round with a score of " + playerTwoScore);
+		for (var i = 1; i <= playerOneScore; i++) {
+			if (i === playerOneScore) {
+				document.getElementById("results").innerHTML = "Player 1 WON with " 
+				+ resultsType[i] + " hand!!";
+			}
+		}
 	} else if (playerOneScore < playerTwoScore) {
-		console.log("player 2: You won the round with a score of " + playerTwoScore);
-		console.log("player 1: You lost the round with a score of " + playerOneScore);
+		for (var i = 1; i <= playerTwoScore; i++) {
+			if (i === playerTwoScore) {
+				document.getElementById("results").innerHTML = "Player 1 WON with " 
+				+ resultsType[i] + " hand!!";
+			}
+		}
 
 	} else if (playerOneScore === playerTwoScore) {
-		console.log("We have a tie round with player 1 score of '" + playerOneScore 
-			+ "' and player 2 score of " + playerTwoScore + "'");
+		document.getElementById("results").innerHTML = "Its a TIE  round!! "
+		//console.log("We have a tie round with player 1 score of '" + playerOneScore 
+		//	+ "' and player 2 score of " + playerTwoScore + "'");
 	}
 	playerOneScore = -1;
 	playerTwoScore = -1;
@@ -120,6 +130,10 @@ function play() {
 
 }
 
+/*
+to check which players is playing first and output
+the results to the correct box on the webpage 
+*/
 function outputResults(players, output) {
 	var playerOne = "Player One, ";
 	var playerTwo = "Player Two, ";
@@ -134,45 +148,35 @@ function outputResults(players, output) {
 The function will generate random numbers for each dice there is
 and score it passed on the results. 
 */
-function playerRoll(players) {
+function playerRoll(players, results) {
 	var score = 0;
 	var output = "";
-	var results = randomNumberGenerater();
+	//var results = randomNumberGenerater();
 
 	if(singlesHand(results)) {
-		score = 10;		
+		score = 4;		
 		output = "WOOW You have Singles hand: " + results;
 		outputResults(players, output);
-		//document.getElementById("box1").innerHTML = output;
-		//console.log(players + "WOOW You have Singles hand: " + results);
 		return score;
 	} else if (containsThreeHappyNumbers(results)) {
-		score = 7;
+		score = 3;
 		output = "your hand has 3 happy numbers: " + results;
 		outputResults(players, output);
-		//document.getElementById("box1").innerHTML = output;
-		//console.log(players + "you have 3 happy numbers: " + results);
 		return score; 
 	} else if (evenNumbers(results)) {
-		score = 5;
+		score = 2;
 		output ="your hand has 4 even numbers: " + results;
 		outputResults(players, output);
-		//document.getElementById("box1").innerHTML = output;
-		//console.log(players + "you have 4 even numbers: " + results);
 		return score;
 	} else if (oddNumbers(results)) {
-		score = 4;
+		score = 1;
 		output ="your hand has 5 odd numbers: " + results;
 		outputResults(players, output);
-		//document.getElementById("box1").innerHTML = output;
-		//console.log(players + "you have 5 odd numbers: " + results);
 		return score;
 	} else {
 		score = 0;
 		output ="your hand has the lowest hand: " + results;
 		outputResults(players, output);
-		//document.getElementById("box1").innerHTML = output;
-		//console.log(players + "you have no hand: " + results);
 		return score; 
 	}
 
@@ -184,11 +188,14 @@ it tests which user clicks to play
 	function playerClicks(run) {
 	var playerOne = "Player One, ";
 	var playerTwo = "Player Two, ";
+	var results = 0;
 	if (run.id === "player1") {
-		playerOneScore =  playerRoll(playerOne);
+		results = randomNumberGenerater();
+		playerOneScore =  playerRoll(playerOne, results);
 	} else if (run.id === "player2") {
-		playerTwoScore = playerRoll(playerTwo);
+		results = randomNumberGenerater();
+		playerTwoScore = playerRoll(playerTwo, results);
 	}
 
-	play();
+	play(results);
 }

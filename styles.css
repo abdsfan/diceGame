@@ -11,9 +11,19 @@
     color: black;
 }
 #boxes{
-	margin-top: 50px;
+	margin-top: 10px;
 	margin-left: 130px;
 	float: center;
+}
+
+.r1{
+	background-color: navy;
+	color: white;
+	width: 90%;
+	height: 50px;
+	margin-left: 40px;
+	text-align: center;
+	font-weight: bold;
 }
 
 .rules, .ranking{
