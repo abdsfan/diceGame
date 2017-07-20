@@ -10,8 +10,9 @@ are ones.
 */
 function singlesHand(results) {
 	var controller = true; 
+	var one = 1;
 	for (var i = 0; i < results.length; i++) {
-		if (results[i] != 1) {
+		if (results[i] != one) {
 			controller = false;
 			return controller;
 		}
@@ -27,11 +28,12 @@ at least 3 happy numbers.
 function containsThreeHappyNumbers(results) {
 	var happyNumbers = [1, 7, 10, 13, 19];
 	var end = 0;
+	var three = 3;
 	for (var i = 0; i < happyNumbers.length; i++) {
 		if (results.includes(happyNumbers[i])) {
 			end++;
 		}
-		if (end === 3) {
+		if (end === three) {
 			return true;
 		}
 	}
@@ -44,11 +46,14 @@ The function will test for 4 even numbers.
 */
 function evenNumbers(results) {
 	var end = 0;
+	var zero = 0;
+	var two = 2;
+	var four = 4;
 	for (var i = 0; i < results.length; i++) {
-		if (results[i] % 2 === 0) {
+		if (results[i] % two === zero) {
 			end++;
 		}
-		if (end === 4) {
+		if (end === four) {
 			return true;
 		}
 	} 
@@ -60,11 +65,14 @@ The function will test for 5 odd numbers.
 */
 function oddNumbers(results) {
 	var end = 0;
+	var zero = 0;
+	var two = 2;
+	var five = 5;
 	for (var i = 0; i < results.length; i++) {
-		if (results[i] % 2 != 0) {
+		if (results[i] % two != zero) {
 			end++;
 		}
-		if (end === 5) {
+		if (end === five) {
 			return true;
 		}
 	} 
@@ -77,38 +85,39 @@ to generate a random number for every dice in the array
 function randomNumberGenerater() {
 	var dice1 = [4, 6, 8, 10, 12, 20];
 	var results = [];
+	var one = 1;
 	for (var i = 0; i < dice1.length; i++) {
-		results.push(Math.floor(Math.random() * dice1[i] + 1));
+		results.push(Math.floor(Math.random() * dice1[i] + one));
 
 	}
 	return results;
 }
 
 /*
+To output the winner and the winning hand type. 
+*/
+function outputWinnerResults(playerScore, playerNumber) {
+	var resultsType = ["No hand", "5 Odd Numbers", "4 Even Numbers", "3 Happy Numbers", "Singles"];
+	for (var i = 1; i <= playerScore; i++) {
+		if (i === playerScore) {
+			document.getElementById("results").innerHTML = "Player " + playerNumber + " WON with " 
+			+ resultsType[i] + " hand!!";
+		}
+	}	
+}
+
+/*
 to determin the winner based on the score
 */
-
 function determinWhoWins() {
-	var resultsType = ["No hand", "5 Odd Numbers", "4 Even Numbers", "3 Happy Numbers", "Singles"]
+	var one = 1;
+	var two = 2;
 	if (playerOneScore > playerTwoScore) {
-		for (var i = 1; i <= playerOneScore; i++) {
-			if (i === playerOneScore) {
-				document.getElementById("results").innerHTML = "Player 1 WON with " 
-				+ resultsType[i] + " hand!!";
-			}
-		}
+		outputWinnerResults(playerOneScore, one);
 	} else if (playerOneScore < playerTwoScore) {
-		for (var i = 1; i <= playerTwoScore; i++) {
-			if (i === playerTwoScore) {
-				document.getElementById("results").innerHTML = "Player 1 WON with " 
-				+ resultsType[i] + " hand!!";
-			}
-		}
-
+		outputWinnerResults(playerTwoScore, two);
 	} else if (playerOneScore === playerTwoScore) {
 		document.getElementById("results").innerHTML = "Its a TIE  round!! "
-		//console.log("We have a tie round with player 1 score of '" + playerOneScore 
-		//	+ "' and player 2 score of " + playerTwoScore + "'");
 	}
 	playerOneScore = -1;
 	playerTwoScore = -1;
@@ -119,12 +128,12 @@ The function will run the game from the click of the user
 then determin the winner. 
 */
 function play() {
-
-	if (playerOneScore !== -1 && playerTwoScore !== -1) {
+	var negativeOne = -1;
+	if (playerOneScore !== negativeOne && playerTwoScore !== negativeOne) {
 		determinWhoWins();
-	} else 	if (playerOneScore === -1) {
+	} else 	if (playerOneScore === negativeOne) {
 		alert("Player One needs to Roll!!");
-	} else if (playerTwoScore === -1) {
+	} else if (playerTwoScore === negativeOne) {
 		alert("Player Two needs to Roll!!");
 	}
 
@@ -151,30 +160,34 @@ and score it passed on the results.
 function playerRoll(players, results) {
 	var score = 0;
 	var output = "";
-	//var results = randomNumberGenerater();
+	var four = 4;
+	var three = 3;
+	var two = 2;
+	var one = 1;
+	var zero = 0;
 
 	if(singlesHand(results)) {
-		score = 4;		
+		score = four;		
 		output = "WOOW You have Singles hand: " + results;
 		outputResults(players, output);
 		return score;
 	} else if (containsThreeHappyNumbers(results)) {
-		score = 3;
+		score = three;
 		output = "your hand has 3 happy numbers: " + results;
 		outputResults(players, output);
 		return score; 
 	} else if (evenNumbers(results)) {
-		score = 2;
+		score = two;
 		output ="your hand has 4 even numbers: " + results;
 		outputResults(players, output);
 		return score;
 	} else if (oddNumbers(results)) {
-		score = 1;
+		score = one;
 		output ="your hand has 5 odd numbers: " + results;
 		outputResults(players, output);
 		return score;
 	} else {
-		score = 0;
+		score = zero;
 		output ="your hand has the lowest hand: " + results;
 		outputResults(players, output);
 		return score; 
