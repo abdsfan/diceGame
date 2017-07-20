@@ -8,14 +8,12 @@
     height:40px;
     background-color: lightgrey;
 }
-
-.b6 {
-	margin-left: : 300px;
+#boxes{
+	margin-left: 150px;
+	float: center;
 }
 
-.b6 {
-	margin-right: 300px;
-}
+
 .gameDiscription{
 	font-size: 15px;
 }

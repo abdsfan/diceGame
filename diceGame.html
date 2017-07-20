@@ -2,12 +2,12 @@
 
 <html>
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<title></title>
 </head>
 <body class="bodyContent">
 	<div id="content">
-	<img class="backgroundPic", src="dice.jpg">
 	<left>
 	<h1><center>Welcome to Texas Holdem Of Dice</center></h1>
 	<h2>Rules of the game</h2>
@@ -29,17 +29,20 @@
 		<h3>Note: Happy numbers are 1, 7, 10, 13, 19.</h3>
 
 	</p>
-	<script type="text/javascript" src="diceGame.js"> </script>
-	<div id="box1", class="b1", style="color: black"></div>
-	<div id="box2", class="b2", style="color: black"></div>
-	<div id="box3", class="b3", style="color: black"></div>
-	<div id="box4", class="b4", style="color: black"></div>
-	<div id="box5", class="b5", style="color: black"></div>
-	<div id="box6", class="b6", style="color: black"></div></br></br>
+	<div id="boxes", style="position: center">
+		<div id="box1", class="b1", style="color: black"></div>
+		<div id="box2", class="b2", style="color: black"></div>
+		<div id="box3", class="b3", style="color: black"></div>
+		<div id="box4", class="b4", style="color: black"></div>
+		<div id="box5", class="b5", style="color: black"></div>
+		<div id="box6", class="b6", style="color: black"></div></br>
+		<button id="player1", onclick="playerClicks(this)", type="button">Player 1: Roll!!</button></br>
+		<button id="player2", onclick="playerClicks(this)", type="button">Player 2: Roll!!</button></br>
+	</div></br></br>
 
-	<button id="player1", onclick="playerClicks(this)", type="button">Player 1: Roll!!</button></br>
-	<button id="player2", onclick="playerClicks(this)", type="button">Player 2: Roll!!</button></br>
+
 	</left>
 	</div>
+	<script type="text/javascript" src="diceGame.js"> </script>
 </body>
 </html>

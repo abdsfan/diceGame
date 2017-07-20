@@ -161,10 +161,8 @@ it tests which user clicks to play
 	var playerTwo = "Player Two, ";
 	if (run.id === "player1") {
 		playerOneScore =  playerRoll(playerOne);
-		//return playerOneScore;
 	} else if (run.id === "player2") {
 		playerTwoScore = playerRoll(playerTwo);
-		//return playerTwoScore;
 	}
 
 	play();
