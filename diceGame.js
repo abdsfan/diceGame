@@ -38,7 +38,6 @@ function containsThreeHappyNumbers(results) {
 		}
 	}
 	return false;
-
 }
 
 /*
@@ -91,7 +90,6 @@ function randomNumberGenerater() {
 
 	}
 	return results;
-}
 
 /*
 To output the winner and the winning hand type. 
@@ -103,13 +101,13 @@ function outputWinnerResults(playerScore, playerNumber) {
 			document.getElementById("results").innerHTML = "Player " + playerNumber + " WON with " 
 			+ resultsType[i] + " hand!!";
 		}
-	}	
+	}
 }
 
 /*
-to determin the winner based on the score
+to determine the winner based on the score
 */
-function determinWhoWins() {
+function determineWhoWins() {
 	var one = 1;
 	var two = 2;
 	if (playerOneScore > playerTwoScore) {
@@ -121,22 +119,21 @@ function determinWhoWins() {
 	}
 	playerOneScore = -1;
 	playerTwoScore = -1;
-}
+}	
 
 /*
 The function will run the game from the click of the user
-then determin the winner. 
+then determine the winner. 
 */
 function play() {
 	var negativeOne = -1;
 	if (playerOneScore !== negativeOne && playerTwoScore !== negativeOne) {
-		determinWhoWins();
-	} else 	if (playerOneScore === negativeOne) {
-		alert("Player One needs to Roll!!");
+		determineWhoWins();
+	} else if (playerOneScore === negativeOne) {
+		alert("Player one needs to roll to determine the winner!!");
 	} else if (playerTwoScore === negativeOne) {
-		alert("Player Two needs to Roll!!");
+		alert("Player two needs to roll to determine the winner!!");
 	}
-
 }
 
 /*
